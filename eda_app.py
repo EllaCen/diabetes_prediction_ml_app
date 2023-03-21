@@ -26,7 +26,7 @@ def run_eda_app():
 		
 		st.dataframe(df)
 
-		with st.beta_beta_expander("Data Types Summary"):
+		with st.beta_expander("Data Types Summary"):
 			st.dataframe(df.dtypes)
 
 		with st.beta_expander("Descriptive Summary"):
