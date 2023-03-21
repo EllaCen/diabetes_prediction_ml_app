@@ -26,16 +26,16 @@ def run_eda_app():
 		
 		st.dataframe(df)
 
-		with st.beta_expander("Data Types Summary"):
+		with st.expander("Data Types Summary"):
 			st.dataframe(df.dtypes)
 
-		with st.beta_expander("Descriptive Summary"):
+		with st.expander("Descriptive Summary"):
 			st.dataframe(df_clean.describe())
 
-		with st.beta_expander("Gender Distribution"):
+		with st.expander("Gender Distribution"):
 			st.dataframe(df['Gender'].value_counts())
 
-		with st.beta_expander("Class Distribution"):
+		with st.expander("Class Distribution"):
 			st.dataframe(df['class'].value_counts())
 	else:
 		st.subheader("Plots")
@@ -43,7 +43,7 @@ def run_eda_app():
 		# Layouts
 		col1,col2 = st.columns([2,1])
 		with col1:
-			with st.beta_expander("Dist Plot of Gender"):
+			with st.expander("Dist Plot of Gender"):
 				# fig = plt.figure()
 				# sns.countplot(df['Gender'])
 				# st.pyplot(fig)
@@ -55,7 +55,7 @@ def run_eda_app():
 				p01 = px.pie(gen_df,names='Gender Type',values='Counts')
 				st.plotly_chart(p01,use_container_width=True)
 
-			with st.beta_expander("Dist Plot of Class"):
+			with st.expander("Dist Plot of Class"):
 				fig = plt.figure()
 				sns.countplot(df['class'])
 				st.pyplot(fig)
@@ -65,13 +65,13 @@ def run_eda_app():
 
 
 		with col2:
-			with st.beta_expander("Gender Distribution"):
+			with st.expander("Gender Distribution"):
 				st.dataframe(df['Gender'].value_counts())
 
-			with st.beta_expander("Class Distribution"):
+			with st.expander("Class Distribution"):
 				st.dataframe(df['class'].value_counts())
 			
-		with st.beta_expander("Frequency Dist Plot of Age"):
+		with st.expander("Frequency Dist Plot of Age"):
 			# fig,ax = plt.subplots()
 			# ax.bar(freq_df['Age'],freq_df['count'])
 			# plt.ylabel('Counts')
@@ -85,7 +85,7 @@ def run_eda_app():
 			p2 = px.line(freq_df,x='Age',y='count')
 			st.plotly_chart(p2)
 
-		with st.beta_expander("Outlier Detection Plot"):
+		with st.expander("Outlier Detection Plot"):
 			# outlier_df = 
 			fig = plt.figure()
 			sns.boxplot(df['Age'])
@@ -94,7 +94,7 @@ def run_eda_app():
 			p3 = px.box(df,x='Age',color='Gender')
 			st.plotly_chart(p3)
 
-		with st.beta_expander("Correlation Plot"):
+		with st.expander("Correlation Plot"):
 			corr_matrix = df_clean.corr()
 			fig = plt.figure(figsize=(20,10))
 			sns.heatmap(corr_matrix,annot=True)
